@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venta de Frutas Congeladas</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <h1>VENTA DE PRODUCTOS</h1>
+      </div>
+      <div class="intro-container" style="background-image: url({% static 'img/background.jpg' %});">
+        <h3>DESLIZA HACIA ABAJO PARA COMENZAR</h3>
+    </div>    
+    </header>
+    <main>
+      <div id="productos">
+        <ul class="product-list">
+          {% for producto in producto %}
+          <li>
+            <a href="{{ producto.nombre }}" style="text-decoration: none">
+              <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
+              <h3>{{ producto.nombre }}</h3>
+              <p>{{ producto.descripcion }}</p>
+              <hr />
+              <p>${{ producto.precio }}</p>
+            </a>
+          </li>
+          {% endfor %}
+
+          <!-- <li>
+            <a href="inicio" style="text-decoration: none; cursor: pointer;">
+              <img src="{% static 'img/naranja.jpg' %}" alt="fruta">
+              <h3>Naranja</h3>
+              <p>Naranja es una fruta congelada</p>
+              <hr />
+              <p>$1.50</p>
+            </a>
+          </li> -->
+
+        </ul>
+      </div>
+    </main>
+    <script src="{% static 'js/scripts.js' %}"></script>
+  </body>
+</html>
