@@ -26,7 +26,7 @@ header {
 }
 
 .intro-container {
-  background-image: url('{{ background_image }}');
+  background-image: url("{{ background_image }}");
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -39,7 +39,6 @@ header {
   color: #fff;
   padding-top: 50vh;
 }
-
 
 /* MAIN */
 
@@ -85,8 +84,9 @@ header {
   padding: 0 5px;
 }
 
-.product-list .out-of-stock {
+.product-list .empty {
   opacity: 0.6;
+  filter: grayscale(100%);
 }
 
 .product-list hr {
