@@ -6,23 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Venta de Frutas Congeladas</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="icon" href="favicon.ico" type="css/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/f6d6f5a997.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header>
       <div class="header">
-        <h1>VENTA DE PRODUCTOS</h1>
+        <!-- <h1>VENTA DE PRODUCTOS</h1>
+        <a href="">
+          <i class="fa-solid fa-cart-shopping" style="color: black"></i>
+        </a> -->
+        <div id="header">
+          <div class="btn-header">
+              <a class="btn-h" id="btn-carrito" href="https://wa.me/3874890010" target="_blank">
+                <i class="fa-solid fa-cart-shopping" style="color: black"></i>
+                <div class="cuadro-informacion">CARRITO</div>
+              </a>
+          </div>
       </div>
-      <div class="intro-container" style="background-image: url({% static 'img/background.jpg' %});">
+      
+      <div
+        class="intro-container"
+        style="background-image: url({% static 'img/background.jpg' %})"
+      >
         <h3>DESLIZA HACIA ABAJO PARA COMENZAR</h3>
-    </div>    
+      </div>
     </header>
+
     <main>
       <div id="productos">
         <ul class="product-list">
           {% for producto in producto %}
           <li>
             <a href="{{ producto.nombre }}" style="text-decoration: none">
-              <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
+              <img
+                src="{{ producto.imagen.url }}"
+                alt="{{ producto.nombre }}"
+              />
               <h3>{{ producto.nombre }}</h3>
               <p>{{ producto.descripcion }}</p>
               <hr />
