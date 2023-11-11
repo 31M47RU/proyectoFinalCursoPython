@@ -7,6 +7,18 @@
   --beige: rgb(235, 154, 5);
 }
 
+etiqueta {
+  opacity: 0;
+}
+
+#id {
+  opacity: 0;
+}
+
+.class {
+  opacity: 0;
+}
+
 /* HEADER */
 
 header {
