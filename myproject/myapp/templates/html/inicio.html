@@ -22,7 +22,7 @@
         </a> -->
         <div id="header">
           <div class="btn-header">
-              <a class="btn-h" id="btn-carrito" href="{{ carrito.page }}" target="_blank">
+              <a class="btn-h" id="btn-carrito" href="carrito/" >
                 <i class="fa-solid fa-cart-shopping" style="color: black"></i>
                 <div class="cuadro-informacion">CARRITO</div>
               </a>
@@ -38,9 +38,9 @@
     </header>
     <main>
       <div id="productos">
-        <ul class="product-list">
+        <ul id="product-list" class="product-list">
           {% for producto in producto %}
-          <li>
+          <li data-stock="{{ producto.stock}}">
             <a href="{{ producto.nombre }}" style="text-decoration: none">
               <img
                 src="{{ producto.imagen.url }}"
