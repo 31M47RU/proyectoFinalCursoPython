@@ -1,0 +1,44 @@
+{% load static %}
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solicitudes</title>
+    <link rel="stylesheet" href="{% static 'css/stylesSolicitudes.css' %}" />
+    <link rel="icon" href="favicon.ico" type="css/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/f6d6f5a997.js"
+      crossorigin="anonymous"
+    ></script>
+    <etiqueta id="id" class="class"></etiqueta>
+  </head>
+  <body>
+    <h1>Solicitudes Pendientes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Solicitud ID</th>
+                <th>Producto/s</th>
+                <th>Precio</th>
+                <th>Botones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for solicitud in solicitudes %}
+            <tr>
+                <td>{{ solicitud.id }}</td>
+                <td>
+                    {% for item in solicitud.obtener_productos %}
+                        {{ item.producto.nombre }} ({{ item.cantidad }}),
+                    {% endfor %}
+                </td>
+                <td>{{ solicitud.calcular_precio_total|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        
+    </table>
+  </body>
+</html>

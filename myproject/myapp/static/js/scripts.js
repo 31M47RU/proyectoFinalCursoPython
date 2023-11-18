@@ -1,11 +1,20 @@
 function isStockEmpty(product) {
-  const stock = product.attributes["data-stock"].value;
+  const stock = product.dataset.stock;
   return stock === "0";
 }
 
-function addingCssClassToHTML(product, className) {
-  product.classList.add(className);
-}
+document.addEventListener("DOMContentLoaded", function () {
+  const btnCarrito = document.getElementById("btn-carrito");
+
+  btnCarrito.addEventListener("click", function () {
+    const carro = document.getElementById("carro");
+    carro.classList.toggle("c-active");
+  });
+
+  document.getElementById('c-finish').addEventListener('click', function() {
+    window.open('https://wa.me/3878643194?text=Pedido Hecho', '_blank');
+});
+});
 
 function main() {
   const productList = document.getElementById("product-list");

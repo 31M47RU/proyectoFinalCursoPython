@@ -1,4 +1,5 @@
 {% load static %}
+{% load mathfilters %}
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -16,19 +17,47 @@
   <body>
     <header>
       <div class="header">
-        <!-- <h1>VENTA DE PRODUCTOS</h1>
-        <a href="">
-          <i class="fa-solid fa-cart-shopping" style="color: black"></i>
-        </a> -->
         <div id="header">
+          <h1>VENTA DE PRODUCTOS</h1>
           <div class="btn-header">
-              <a class="btn-h" id="btn-carrito" href="carrito/" >
+              <a class="btn-h" id="btn-carrito">
                 <i class="fa-solid fa-cart-shopping" style="color: black"></i>
-                <div class="cuadro-informacion">CARRITO</div>
+                <div class="cuadro-informacion">carrito</div>
+              </a>
+              <a href="/solicitudes/" class="btn-h" id="btn-admin">
+                <i class="fa-solid fa-circle-user"></i>
+                <div class="cuadro-informacion">iniciar sesion</div>
               </a>
           </div>
-      </div>
-      
+        </div>
+        <section id="carro" class="">
+          <div class="c-container">
+            <div class="c-header" style="text-transform: uppercase;">
+              carrito
+            </div>
+            <div class="c-body">
+              <ul class="c-list">
+                {% for item in carrito.itemcarrito_set.all %}
+                <li>
+                  <div class="c-nombre">
+                    <h3>{{ item.producto.nombre }}</h3>
+                    <h5>${{ item.producto.precio|mul:item.cantidad }}</h5>
+                  </div>
+                  <div class="c-precio">
+                    <a href="/res/{{ item.producto.id }}" class="c-calc" id="menos"> - </a>
+                    <h3>{{ item.cantidad }}</h3>
+                    <a href="/add/{{ item.producto.id }}" class="c-calc" id="mas"  > + </a>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="c-footer">
+              <a href="/addSoli/" id="c-finish">Realizar Pedido</a>
+            </div>
+          </div>
+        </section>
+
       <div
         class="intro-container"
         style="background-image: url({% static 'img/background.jpg' %})"
@@ -39,13 +68,10 @@
     <main>
       <div id="productos">
         <ul id="product-list" class="product-list">
-          {% for producto in producto %}
-          <li data-stock="{{ producto.stock}}">
-            <a href="{{ producto.nombre }}" style="text-decoration: none">
-              <img
-                src="{{ producto.imagen.url }}"
-                alt="{{ producto.nombre }}"
-              />
+          {% for producto in productos %}
+          <li data-stock="{{ producto.stock }}">
+            <a href="/add/{{ producto.id }}">
+              <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
               <h3>{{ producto.nombre }}</h3>
               <p>{{ producto.descripcion }}</p>
               <hr />
@@ -56,6 +82,8 @@
         </ul>
       </div>
     </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="{% static 'js/scripts.js' %}"></script>
   </body>
 </html>

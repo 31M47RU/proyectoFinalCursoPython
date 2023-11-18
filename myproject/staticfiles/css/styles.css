@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
+  font-family: sans-serif;
 
   --beige: rgb(235, 154, 5);
 }
@@ -37,9 +38,9 @@ header {
   background-color: var(--beige);
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  z-index: 999999999;
+  z-index: 9;
   transition: opacity .3s ease;
   opacity: 1;
 }
@@ -86,6 +87,7 @@ header {
   border-radius: 50%;
   margin: 0 0.5rem;
   transition: all .1s;
+  text-transform: uppercase;
 }
 
 .btn-h i {
@@ -235,4 +237,111 @@ header {
 
 .product-list li:hover hr {
   background-color: rgba(72, 72, 72, 0.4);
+}
+
+/* CARRITO */
+
+/* Estilos para el section con id #carro */
+#carro {
+  position: fixed;
+  top: 15%;
+  right: 10px;
+  background-color: white;
+  color: black;
+  width: 25%;
+  min-height: 300px;
+  padding: 5px 10px;
+  border-radius: 16px;
+  display: none;
+  z-index: 99;
+  display: none;
+  margin-left: 5px;
+}
+
+/* Estilos para el contenedor principal */
+.c-container {
+  padding: 10px;
+}
+
+/* Estilos para el encabezado */
+.c-header {
+  text-transform: uppercase;
+  text-align: center; /* Centra el texto */
+}
+
+/* Estilos para la lista de elementos */
+.c-list li {
+  display: flex;
+  justify-content: space-between; /* Distribuye el contenido alrededor */
+  margin-bottom: 10px;
+}
+
+/* Estilos para el nombre del producto */
+.c-list li h3 {
+  margin: 0;
+}
+
+.c-nombre h3 {
+  text-transform: uppercase;
+}
+
+/* Estilos para el contenedor de precio con botones + y - */
+.c-precio {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos para los botones + y - */
+.c-precio button {
+  margin: 0 5px;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  border: 2px black solid;
+  cursor: grab;
+}
+
+#menos {
+  color: white;
+  background-color: red;
+}
+
+#mas {
+  color: white;
+  background-color: green;
+}
+
+/* Estilos para el pie de página */
+.c-footer {
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* Estilos para el botón de realizar pedido */
+.c-footer button {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  padding: 10px;
+  background-color: #4CAF50; /* Puedes cambiar el color según tus preferencias */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilos para el cartel */
+.c-cartel {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: none;
+}
+
+/* Estilos para el cuadro de información cuando el carrito está activo */
+#carro.c-active  {
+  display: block;
 }
