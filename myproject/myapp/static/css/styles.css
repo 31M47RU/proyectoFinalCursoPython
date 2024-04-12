@@ -314,21 +314,38 @@ header {
 
 /* Estilos para el pie de página */
 .c-footer {
-  width: 100%; /* Ocupa todo el ancho del contenedor */
+  width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
 }
 
-/* Estilos para el botón de realizar pedido */
-.c-footer button {
-  width: 100%; /* Ocupa todo el ancho disponible */
+/* Estilos para el botón de realizar pedido (tanto para botones como para enlaces) */
+.c-footer button,
+.c-footer a {
+  display: block;
+  width: 100%;
   padding: 10px;
-  background-color: #4CAF50; /* Puedes cambiar el color según tus preferencias */
+  background-color: #4CAF50;
   color: #fff;
+  text-align: center;
+  text-decoration: none; /* Asegúrate de que los enlaces no tengan decoración subrayada */
   border: none;
   cursor: pointer;
 }
+
+/* Anular estilos predeterminados del enlace */
+.c-footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Cambia el color al pasar el ratón sobre el botón/enlace */
+.c-footer button:hover,
+.c-footer a:hover {
+  background-color: #45a049;
+}
+
 
 /* Estilos para el cartel */
 .c-cartel {

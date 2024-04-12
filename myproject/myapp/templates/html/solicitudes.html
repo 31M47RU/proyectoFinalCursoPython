@@ -15,30 +15,44 @@
     <etiqueta id="id" class="class"></etiqueta>
   </head>
   <body>
-    <h1>Solicitudes Pendientes</h1>
-    <table>
+    <div class="container">
+      <header>
+        <h1>Solicitudes Pendientes</h1>
+        <a href="{% url 'inicio' %}" class="button">Volver a Inicio</a>
+      </header>
+      <table>
         <thead>
-            <tr>
-                <th>Solicitud ID</th>
-                <th>Producto/s</th>
-                <th>Precio</th>
-                <th>Botones</th>
-            </tr>
+          <tr>
+            <th>Solicitud ID</th>
+            <th>Producto/s</th>
+            <th>Precio</th>
+            <th>Botones</th>
+          </tr>
         </thead>
         <tbody>
-            {% for solicitud in solicitudes %}
-            <tr>
-                <td>{{ solicitud.id }}</td>
-                <td>
-                    {% for item in solicitud.obtener_productos %}
-                        {{ item.producto.nombre }} ({{ item.cantidad }}),
-                    {% endfor %}
-                </td>
-                <td>{{ solicitud.calcular_precio_total|floatformat:2 }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        
+          {% for solicitud in solicitudes %}
+          <tr>
+              <td>{{ solicitud.id }}</td>
+              <td>
+                  {% for item in solicitud.itemsolicitud_set.all %}
+                      {{ item.producto.nombre }} ({{ item.cantidad }}),
+                  {% endfor %}
+              </td>
+              <td>{{ solicitud.calcular_precio_total|floatformat:2 }}</td>
+              <td id="botones">
+                <form method="post" action="{% url 'confirmar_solicitud' solicitud.id %}">
+                    {% csrf_token %}
+                    <button type="submit" id="btn1">Confirmar</button>
+                </form>
+                <form method="post" action="{% url 'cancelar_solicitud' solicitud.id %}">
+                    {% csrf_token %}
+                    <button type="submit" id="btn2">Cancelar</button>
+                </form>
+              </td>
+            
+          </tr>
+          {% endfor %}
+        </tbody>  
     </table>
   </body>
 </html>

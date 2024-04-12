@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.getElementById('c-finish').addEventListener('click', function() {
-    window.open('https://wa.me/3878643194?text=Pedido Hecho', '_blank');
+    window.open('https://wa.me/3878643194?text=Pedido%20Hecho', '_blank');
 });
 });
 

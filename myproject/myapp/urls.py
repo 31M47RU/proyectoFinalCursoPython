@@ -9,4 +9,6 @@ urlpatterns = [
     path('res/<int:producto_id>/', sacar_del_carrito, name='sacar_del_carrito'),
     path('solicitudes/', solicitudes, name='ver_solicitudes'),
     path('addSoli/', addSolicitud, name='addSoli'),
+    path('conSoli/<int:solicitud_id>/', confirmar_solicitud, name='confirmar_solicitud'),
+    path('canSoli/<int:solicitud_id>/', cancelar_solicitud, name='cancelar_solicitud'),
 ]

@@ -28,6 +28,23 @@ class ItemCarrito(models.Model):
     
 class Solicitud(models.Model):
     carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE)
+    productos = models.ManyToManyField(Producto, through='ItemSolicitud')
+
+    def obtener_productos(self):
+        return self.productos.all()
+
+    def calcular_precio_total(self):
+        return sum(item.cantidad * item.producto.precio for item in self.itemsolicitud_set.all())
 
     def __str__(self):
         return f"Solicitud {self.id}"
+
+
+class ItemSolicitud(models.Model):
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    solicitud = models.ForeignKey(Solicitud, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.solicitud} - {self.producto} - Cantidad: {self.cantidad}"
+
