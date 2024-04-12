@@ -103,4 +103,3 @@ def borrar_solicitudes(request):
     Solicitud.objects.all().delete()
 
     return redirect('/solicitudes')
-
