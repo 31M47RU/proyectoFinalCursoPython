@@ -47,4 +47,3 @@ class ItemSolicitud(models.Model):
 
     def __str__(self):
         return f"{self.solicitud} - {self.producto} - Cantidad: {self.cantidad}"
-

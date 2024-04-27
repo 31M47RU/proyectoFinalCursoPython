@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .models import *
-from django.db.models import Sum, F, ExpressionWrapper, DecimalField
 
 """
 ZONA DE RENDERS DE PAGINAS HTML
@@ -10,16 +9,6 @@ def inicio(request):
     productos = Producto.objects.all()
     carrito = Carrito.objects.first()
     return render(request, "html/inicio.html", {'productos': productos, 'carrito': carrito})
-
-# def solicitudes(request):
-#     solicitudes = Solicitud.objects.annotate(
-#         precio_total=Sum(
-#             ExpressionWrapper(F('carrito__itemcarrito__cantidad') * F('carrito__itemcarrito__producto__precio'),
-#                               output_field=DecimalField())
-#         )
-#     ).prefetch_related('carrito__itemcarrito_set__producto').all()
-
-#     return render(request, 'html/solicitudes.html', {'solicitudes': solicitudes})
 
 def solicitudes(request):
     solicitudes = Solicitud.objects.prefetch_related('productos__itemsolicitud_set').all()
